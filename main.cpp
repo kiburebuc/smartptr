@@ -1,4 +1,5 @@
-#include "coolptr.hpp"
+#include "coolptr.h"
+#include "CS1C.h"
 
 int main() {
   //CS1C* ptr = new CS1C;

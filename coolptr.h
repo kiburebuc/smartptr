@@ -1,14 +1,7 @@
-#include <iostream>
+#ifndef _COOLPTR_
+#define _COOLPTR_
 
-class CS1C {
-  public:
-    CS1C() {}
-    CS1C(std::string student) : student_(student) {
-      std::cout << "ctor\n";
-    }
-  private:
-    std::string student_;
-};
+#include <iostream>
 
 template<typename T> class CoolPtr {
   public:
@@ -24,3 +17,5 @@ template<typename T> class CoolPtr {
   private:
     T* target_;
 };
+
+#endif
