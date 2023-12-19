@@ -5,14 +5,21 @@
 
 template<typename T> class CoolPtr {
   public:
-    CoolPtr() { std::cout << "im def ctor\n";}
-    CoolPtr(T* target) : target_(target) {
-      std::cout << "ctor\n;";
-    }
+    CoolPtr(): target_(nullptr) {}
+    CoolPtr(T* target): target_(target) {}
     CoolPtr(const T&) = delete;  // copy ctor deleted
-    ~CoolPtr() {
-      std::cout << "dtor\n";
-      delete target_;
+    CoolPtr(CoolPtr&& obj): target_(nullptr) {
+      target_ = obj.target_;
+      obj.target_ = nullptr;
+    }
+    ~CoolPtr() { if(target_) delete target_; }
+
+    CoolPtr& operator=(const CoolPtr&) = delete;
+    CoolPtr& operator=(CoolPtr&& obj) {
+      if(target_) delete target_;
+      target_ = obj.target_;
+      obj.target_ = nullptr;
+      return *this;
     }
   private:
     T* target_;
