@@ -1,4 +1,4 @@
-MAIN = main.o
+MAIN = hw07.o
 
 coolptr.out: $(MAIN)
 	$(LINK.cc) $^ -o $@
