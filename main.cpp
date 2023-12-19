@@ -5,4 +5,7 @@ int main() {
   std::string st = "Jose";
   CoolPtr<CS1C> defptr;
   CoolPtr<CS1C> cptr(new CS1C(st));
+  defptr = std::move(cptr);
+
+  std::cout << defptr->getName() << '\n';
 }
